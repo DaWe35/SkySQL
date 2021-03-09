@@ -50,6 +50,11 @@ class DB {
         }
         return columns
     }
+
+    async getTableStructure(tableName) {
+        const result = await this.query("show columns from " + tableName)
+        return result
+    }
 	
     async getAllIndex(tableName) {
         const result = await this.query(`select table_name, non_unique, group_concat(column_name order by seq_in_index) as index_columns 

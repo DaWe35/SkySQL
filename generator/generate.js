@@ -8,9 +8,11 @@ const dir = __dirname + '/../dist'
 exports.generate = async function generate(config)  {
 	const { DB } = require('./databases/' + config.dbConfig.type)
 	const db = new DB(config)
+	let asd = await db.getTableStructure('messages')
+	console.log(asd)
 	
-	// remove dist folder 
-	fs.rmdirSync(dir, { recursive: true });
+	/* // remove dist folder 
+	fs.rmdirSync(dir, { recursive: true })
 
 	// make new dist folder with initial files
 	initDataFolder()
@@ -46,5 +48,5 @@ exports.generate = async function generate(config)  {
 	db.end()
 	const skylink = await client.uploadDirectory(dir)
 	console.log('SkySQL data uploaded to', skylink)
-	return skylink
+	return skylink */
 }
